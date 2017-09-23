@@ -31,7 +31,7 @@ double mysqrt(int n, int precision) {
 
 	for (int p = 0; p <= precision; ++p) {
 		root = compUsingBS(be, en, inc, n);
-		be = root;
+		be = root;4 
 		en = root + inc;
 		inc = inc / 10.0;
 	}

@@ -21,7 +21,7 @@ int cntSet(int n) {
 }
 
 
-int fastCnt(int n){
+int fastCnt(int n){ //O(LOG(N)) log base 10 
     int cnt = 0;
     while(n){
         ++cnt;

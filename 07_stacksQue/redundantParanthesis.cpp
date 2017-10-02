@@ -5,7 +5,7 @@
 #include <stack>
 using namespace std;
 
-int redundantParanthesis(const string& str){
+int redundantParanthesis(const string& str){    //O(n)
     stack<int> s;
     s.push(0);
     int cnt = 0;

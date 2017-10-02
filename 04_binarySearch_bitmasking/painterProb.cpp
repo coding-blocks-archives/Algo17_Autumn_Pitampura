@@ -5,7 +5,7 @@
 #include <numeric>
 using namespace std;
 
-bool canFinish(int availPainter, int walls[], int n, int reqTime){
+bool canFinish(int availPainter, int walls[], int n, int reqTime){  //O(n)
     int nPainter = 1;
     int curPainterTime = 0;
 
@@ -33,7 +33,7 @@ bool canFinish(int availPainter, int walls[], int n, int reqTime){
 }
 
 
-int minWalls(int walls[], int n, int K){
+int minWalls(int walls[], int n, int K){    //O(nlogs)  s=sum/best
     int best = accumulate(walls, walls + n, 0);
 
     int be = 0;

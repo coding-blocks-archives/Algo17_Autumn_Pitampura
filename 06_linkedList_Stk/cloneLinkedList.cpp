@@ -30,9 +30,19 @@ void printLL(const specialNode * head) {
 //creation of the randomList
 //**********************************************************
 specialNode* randomNode(specialNode * head, const int len) {
-    // srand(time(NULL));  
-    //this is wrong since srand is called again and again
-    //time(NULL) gives the total number of SECONDS elapsed from 1-Jan-1970 
+    //srand(time(NULL));  
+
+    /*
+    rand() function uses seed to generate a random number. How it does so???
+    It takes the seed value && a previous generated random number,
+    perform some mathematical operations and returns a random Number
+    Effectively, if seed is same, the randNum is always same
+
+    time(NULL) gives the total number of SECONDS elapsed from 1-Jan-1970 
+    So, srand(time(NULL)) in line 33 is wrong since srand should be called 
+    just once to initialise seed. If it is called more than once in 1 sec, the value of
+    seed would be same and hence the same random number is obtained.
+    */
 
     int r_num = rand();
     r_num %= len;

@@ -15,7 +15,7 @@ public:
     }
 
 
-    int pop(){
+    int pop(){      //Time Complexity: O(n)
         if (full->empty()) return -1;
 
         //pop is costly
@@ -36,7 +36,7 @@ public:
         return frontEle;
     }
 
-    void push(int x){
+    void push(int x){       //Time Complexity: O(1)
         full->push(x);
     }
 

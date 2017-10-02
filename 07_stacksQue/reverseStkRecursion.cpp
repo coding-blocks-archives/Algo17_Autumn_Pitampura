@@ -5,7 +5,7 @@
 #include <stack>
 using namespace std;
 
-void insertAtBottom(stack<int>& s, int x){
+void insertAtBottom(stack<int>& s, int x){  //O(n)
     if (s.empty()){
         s.push(x);
         return;
@@ -18,7 +18,7 @@ void insertAtBottom(stack<int>& s, int x){
 }
 
 
-void reverse(stack<int>& s){
+void reverse(stack<int>& s){    //O(n^2)
     if (s.empty()) return;
 
     int topEle = s.top();

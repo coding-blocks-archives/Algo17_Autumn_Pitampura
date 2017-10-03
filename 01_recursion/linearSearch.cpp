@@ -4,13 +4,13 @@
 #include <iostream>
 using namespace std;
 
-void inputArr(int arr[], int sze){
+void inputArr(int arr[], int sze){	//O(n)
 	for(int i = 0; i < sze; ++i){
 		cin >> arr[i];
 	}
 }
 
-int linearSearch(int arr[], int be, int N, int toSearch){
+int linearSearch(int arr[], int be, int N, int toSearch){	//O(n)
 	//base case
 	if (be == N) return -1;	//base case
 

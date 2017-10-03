@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-int maxProfit(int arr[], int be, int en, int yr) {
+int maxProfit(int arr[], int be, int en, int yr) {  //O(2^n)
     if (be > en) {
         //no bottles left to sell
         return 0;   //0 is the maximum profit I can make by selling bottles on table

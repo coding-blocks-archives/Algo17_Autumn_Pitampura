@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-void spiralPrint(char mat[][10], int M, int N){
+void spiralPrint(char mat[][10], int M, int N){ //O(M*N) M,N is the number of rows and column in the matrix
     int startRow = 0;
     int endRow = M - 1;
     int startCol = 0;

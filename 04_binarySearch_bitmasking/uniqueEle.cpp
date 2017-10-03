@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-int findUnique(int arr[], int n){
+int findUnique(int arr[], int n){   //O(n)
     int ans = 0;
     for(int i = 0; i < n; ++i){
         ans = ans ^ arr[i];

@@ -8,7 +8,7 @@ int a[20];
 int b[20];
 int res[40];
 
-void copy(int from[], int be, int nFrom, int to[],  int toBe) {
+void copy(int from[], int be, int nFrom, int to[],  int toBe) {	//O(n)
 	//copies from[be, en] to to[]
 	//to has enough space to accomodate the elements--Assumption
 	for (int i = be; i < nFrom; ++i) {
@@ -17,9 +17,11 @@ void copy(int from[], int be, int nFrom, int to[],  int toBe) {
 	}
 }
 
-void myMerge(int i, int j, int k, int nA, int nB) {
+void myMerge(int i, int j, int k, int nA, int nB) {	//O(n)  
+							//O(nA+nB)
 	//i --> A
 	//j --> B
+	//k --> res
 
 	if (i == nA) {
 		//A is empty

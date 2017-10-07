@@ -5,7 +5,7 @@
 using namespace std;
 const int BITS = 32;
 
-int cvtToDec(int bitArr[]){
+int cvtToDec(int bitArr[]){ //O(1)
     int decNum = 0;
     for(int i = 0; i < BITS; ++i){
         decNum += bitArr[i] * (1 << i);
@@ -14,7 +14,7 @@ int cvtToDec(int bitArr[]){
 }
 
 
-void setArr(int bitArr[], int num){
+void setArr(int bitArr[], int num){ //O(LOG(N)) log base 10
     //updates bitArr as per binary code of num
     int i = 0;
     while(num){
@@ -27,7 +27,7 @@ void setArr(int bitArr[], int num){
 }
 
 
-int findUnique(int arr[], int n){
+int findUnique(int arr[], int n){   //O(NLOG(N))
     int bitArr[BITS] = {};  //initailly all zero
 
     for(int i = 0; i < n; ++i){

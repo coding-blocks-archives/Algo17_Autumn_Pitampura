@@ -5,14 +5,14 @@
 #include <utility>
 using namespace std;
 
-int findXor(int arr[], int n){
+int findXor(int arr[], int n){  //O(n)
     int ans = 0;
     for(int i = 0; i < n; ++i) ans ^= arr[i];
     return ans;
 }
 
 
-pair<int, int> twoUnique(int arr[], int n) {
+pair<int, int> twoUnique(int arr[], int n) {   //O(n)
     //PRINTS two unique elements
     //1 2 3 1 2 3 4 5
     int xored = findXor(arr, n);    //4 ^ 5

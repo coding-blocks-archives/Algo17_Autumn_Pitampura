@@ -14,7 +14,7 @@ public:
     }
 };  //it is must
 
-Node* createLL() {
+Node* createLL() {  //O(n)
     Node * head = NULL;
     Node * tail = NULL;
 
@@ -38,7 +38,7 @@ Node* createLL() {
     return head;
 }
 
-void printLL(Node* head) {
+void printLL(Node* head) {  //O(n)
     Node * curNode = head;
     while (curNode != NULL) {
         cout << curNode->data << "-->";
@@ -47,7 +47,7 @@ void printLL(Node* head) {
     cout << endl;
 }
 
-int lengthLL(Node * head) {
+int lengthLL(Node * head) { //O(n)
     int cnt = 0;
     Node* curNode = head;
     while (curNode) {
@@ -59,7 +59,7 @@ int lengthLL(Node * head) {
 
 typedef pair<Node*, Node*> pnn;
 
-pair<Node*, Node*> findEle(Node* head, int eleToDelete) {
+pair<Node*, Node*> findEle(Node* head, int eleToDelete) {   //O(n)
     //returns the node prev to eleToDelete
     //NULL if element is not found
 
@@ -82,7 +82,7 @@ pair<Node*, Node*> findEle(Node* head, int eleToDelete) {
 
 }
 
-Node* deleteNode(Node* head, int eleToDelete) {
+Node* deleteNode(Node* head, int eleToDelete) { //O(n)
     pnn status = findEle(head, eleToDelete);
 
     if (status.second == NULL) {
@@ -103,7 +103,7 @@ Node* deleteNode(Node* head, int eleToDelete) {
     }
 }
 
-Node * midPointLL(Node* head) {
+Node * midPointLL(Node* head) { //O(n)
     //SET
     Node * slow = head;
     Node * fast = head;
@@ -120,7 +120,7 @@ Node* bubbleSort(Node* head) {
 
 }
 
-Node * last5th(Node* head) {
+Node * last5th(Node* head) {    //O(n)
     //SET
     Node* first = head;
     Node* fifth = head;
@@ -142,7 +142,7 @@ Node * last5th(Node* head) {
 }
 
 
-Node* mergeSorted(Node* A, Node* B) {
+Node* mergeSorted(Node* A, Node* B) {   //O(n+m)    n,m be the lengths of linkedlists A & B respectively
     if (A == NULL){
         //A is empty 
         return B;
@@ -165,7 +165,7 @@ Node* mergeSorted(Node* A, Node* B) {
     return mergedList;
 }
 
-Node * mergeSort(Node * unsortedList){
+Node * mergeSort(Node * unsortedList){  //O(nlogn)
     if (unsortedList == NULL || unsortedList->next == NULL){
         //either 1 or zero element
         return unsortedList;

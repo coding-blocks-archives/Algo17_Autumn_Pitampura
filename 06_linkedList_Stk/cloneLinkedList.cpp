@@ -30,7 +30,7 @@ void printLL(const specialNode * head) {
 //creation of the randomList
 //**********************************************************
 specialNode* randomNode(specialNode * head, const int len) {
-    //srand(time(NULL));  
+    //srand(time(NULL));
 
     /*
     rand() function uses seed to generate a random number. How it does so???
@@ -38,8 +38,8 @@ specialNode* randomNode(specialNode * head, const int len) {
     perform some mathematical operations and returns a random Number
     Effectively, if seed is same, the randNum is always same
 
-    time(NULL) gives the total number of SECONDS elapsed from 1-Jan-1970 
-    So, srand(time(NULL)) in line 33 is wrong since srand should be called 
+    time(NULL) gives the total number of SECONDS elapsed from 1-Jan-1970
+    So, srand(time(NULL)) in line 33 is wrong since srand should be called
     just once to initialise seed. If it is called more than once in 1 sec, the value of
     seed would be same and hence the same random number is obtained.
     */
@@ -93,20 +93,22 @@ specialNode* createLL() {
     return head;
 }
 
-
 int main() {
 
     specialNode * head = createLL();
     // setRandom(head); //included in createLL
     printLL(head);
-    
+
     specialNode * cloneLL(const specialNode*);    //declaration
     //This way you can use function and define them below the calling function
     //Many students are not able to clear the first round due to this restriction
-    
-    specialNode * clone = cloneLL(head);
-    printLL(clone);
 
+    // specialNode * clone = cloneLL(head);
+    // printLL(clone);
+
+    specialNode* cloneLLOptimised(specialNode * head);
+    specialNode * clone = cloneLLOptimised(head);
+    printLL(clone);
 
 }
 
@@ -154,4 +156,40 @@ specialNode* cloneLL(const specialNode * head) {
         b = b->next;
     }
     return clone;
+}
+
+//clone list in O(1) space, O(N) time
+specialNode* cloneLLOptimised(specialNode * head) {
+    //duplicate nodes
+    specialNode * cur = head;
+    while (cur) {
+        specialNode * newNode = new specialNode(cur->data);
+        newNode->next = cur->next;
+        cur->next = newNode;
+        cur = newNode->next;
+    }
+
+    //setting the random pointers
+    cur = head;
+    while (cur) {
+        cur->next->random = cur->random->next;
+        cur = cur->next->next;
+    }
+
+    //seperate the clone from master list
+    specialNode * cloneHead = NULL;
+    specialNode * cloneTail = NULL;
+    cur = head;
+    while (cur) {
+        if (cloneHead == NULL) {
+            cloneHead = cloneTail = cur->next;
+        }
+        else {
+            cloneTail->next = cur->next;
+            cloneTail = cloneTail->next;
+        }
+        cur->next = cur->next->next;
+        cur = cur->next;
+    }
+    return cloneHead;
 }

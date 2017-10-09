@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-int binarySearching(int arr[], int be, int en, int toSearch){
+int binarySearching(int arr[], int be, int en, int toSearch){	//O(Log(n))
 	if (be > en){
 		//represents an invalid range
 		return -1;

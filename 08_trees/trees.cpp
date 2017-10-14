@@ -31,7 +31,7 @@ Node* createBT() {
     return root;
 }
 
-void printBT(Node * root) {
+void printBT(Node * root) {     //O(N) every node is traversed once!
     if (root == NULL) {
         return;
     }
@@ -71,7 +71,7 @@ Node* inputLevel() {
 }
 
 
-void printLevel(Node * root) {
+void printLevel(Node * root) {      //O(N)
     if (root == NULL) {
         return;
     }
@@ -97,13 +97,13 @@ void printLevel(Node * root) {
 
 }
 
-int cnt(Node * root) {
+int cnt(Node * root) {                                  //O(N) every node is traversed once
     if (root == NULL) return 0;
     return cnt(root->left) + 1 + cnt(root->right);
 }
 
 
-int height(Node * root) {
+int height(Node * root) {                               //O(N)
     if (root == NULL) return 0;
 
     int leftHt = height(root->left);
@@ -111,8 +111,8 @@ int height(Node * root) {
     return max(leftHt, rgtHt) + 1;
 }
 
-int diameter(Node * root) {
-    if (root == NULL) return 0;
+int diameter(Node * root) {                             //O(N^2) for every node we are calling height(left node)
+    if (root == NULL) return 0;                         //height(right node) which is 2N for every node!
     int curDiameter = height(root->left) + 1 + height(root->right);
     return max(max(diameter(root->left), diameter(root->right)), curDiameter);
 }
@@ -126,13 +126,13 @@ int diameterInterview(Node* root) {
 
 
 typedef pair<int, int> ii;  //ht, dia
-pair<int, int> diameterOpt(Node* root) {
-    if (root == NULL) {
+pair<int, int> diameterOpt(Node* root) {            //O(N) for every node we are calculating height and diameter once 
+    if (root == NULL) {                             // so each node is being traversed once!
         return ii(0, 0);
     }
 
-    ii leftPair = diameterOpt(root->left);
-    ii rightPair = diameterOpt(root->right);
+    ii leftPair = diameterOpt(root->left);          //O(N)
+    ii rightPair = diameterOpt(root->right);        //O(N)
     int curHt = max(leftPair.first, rightPair.first) + 1;
     int curDia = leftPair.first + rightPair.first + 1;
 
@@ -142,8 +142,8 @@ pair<int, int> diameterOpt(Node* root) {
     return ans;
 }
 
-bool isHtBalanced(Node * root) {
-    if (root == NULL) return true;
+bool isHtBalanced(Node * root) {                    //O(N^2) for each node height(left node) & height(right node)is called
+    if (root == NULL) return true;                  // which is 2N for each node!
 
     int leftHt = height(root->left);
     int rightHt = height(root->right);
@@ -157,12 +157,12 @@ bool isHtBalanced(Node * root) {
 
 typedef pair<int, bool> ib; //ht, isBalanced
 
-ib isHtBalancedOpt(Node * root) {
-    if (root == NULL) {
+ib isHtBalancedOpt(Node * root) {                           //O(N) for each node we are checking node is balanced and
+    if (root == NULL) {                                     // calculating height simultaneously.So each node is traversed once
         return pair<int, bool>(0, true);
     }
-    auto leftAns = isHtBalancedOpt(root->left);
-    auto rightAns = isHtBalancedOpt(root->right);
+    auto leftAns = isHtBalancedOpt(root->left);             //O(N)
+    auto rightAns = isHtBalancedOpt(root->right);           //O(N)
     ib ans;
     ans.first = max(leftAns.first, rightAns.first) + 1;
     ans.second = (
@@ -171,7 +171,7 @@ ib isHtBalancedOpt(Node * root) {
                  );
 }
 
-void mirror(Node * root) {
+void mirror(Node * root) {          //O(N)
     if (root == 0) return;
     mirror(root->left);
     mirror(root->right);
@@ -183,7 +183,7 @@ void mirror(Node * root) {
     */
 }
 
-int sumTree(Node * root) {
+int sumTree(Node * root) {               //O(N)
     //returns sum of a tree and sets the tree accordingly
     if (root == NULL) {
         return 0;
@@ -196,7 +196,7 @@ int sumTree(Node * root) {
     return curSum;
 }
 
-int bestNonAdjSum(Node * root, bool includeRoot) {
+int bestNonAdjSum(Node * root, bool includeRoot) {      //O(N) for each node either if or else part will be executed
     if (root == NULL) return 0;
 
     if (includeRoot) {
@@ -219,8 +219,8 @@ int bestNonAdjSum(Node* root) {
     return max(rootInc, rootExc);
 }
 
-void printKthLevel(Node * root, int K){
-    if (root == NULL) return;
+void printKthLevel(Node * root, int K){     //O(2^k) this code will traverse through all the nodes untill level k
+    if (root == NULL) return;               //So. no. of nodes untill level k are 2^K
 
     if (K == 0){
         cout << root->data << " ";
@@ -231,7 +231,7 @@ void printKthLevel(Node * root, int K){
     printKthLevel(root->right, K - 1);
 }
 
-void printPath(Node * arr[], int be, int en){
+void printPath(Node * arr[], int be, int en){       
     while(be <= en){
         cout << arr[be]->data << " ";
         ++be;
@@ -240,12 +240,12 @@ void printPath(Node * arr[], int be, int en){
 }
 
 Node * arr[100];    //array of Nodes
-void printRoot2Leaf(Node root , ArrayList<Node> a);
+void printRoot2Leaf(Node root , ArrayList<Node> a); 
 
 
-void printRoot2Leaf(Node * root, int idx){
-    if(root == NULL) return;
-    
+void printRoot2Leaf(Node * root, int idx){      //O(h^2) where h is the height of the tree. this function traverses untill
+    if(root == NULL) return;                    //every leaf node and for every leaf node it is printing no. of elements 
+                                                // from root to that leaf node
     // if leaf Node
     if (root->left == NULL && root->right == NULL){
         //append

@@ -6,13 +6,13 @@
 #include <iostream>
 using namespace std;
 
-void inputArr(int arr[], int sze){
+void inputArr(int arr[], int sze){	//O(n)
 	for(int i = 0; i < sze; ++i){
 		cin >> arr[i];
 	}
 }
 
-void printArr(int arr[], int sze){
+void printArr(int arr[], int sze){	//O(n)
 	for(int i = 0; i < sze; ++i) cout << arr[i] << " ";
 	cout << endl; 
 }

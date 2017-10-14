@@ -15,7 +15,7 @@ public:
     }
 };  //it is must
 
-Node* createLL() {
+Node* createLL() {  //O(n)
     Node * head = NULL;
     Node * tail = NULL;
 

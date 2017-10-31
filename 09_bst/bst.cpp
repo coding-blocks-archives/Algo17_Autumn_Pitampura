@@ -47,6 +47,7 @@ Node* createBT() {
     return root;
 }
 
+//Time Complexity :O(n)
 void printBT(Node * root) {
     if (root == NULL) {
         return;
@@ -70,10 +71,12 @@ int search(int arr[], int si, int ei, int x) {
 }
 
 int idx = 0;
-Node * buildTree(int inOrder[], int inStart, int inEnd, int preOrder[]) {
+
+//Time Complexity:O(n) 
+Node * buildTree(int inOrder[], int inStart, int inEnd, int preOrder[]) {  
     if (inStart > inEnd) return NULL;
 
-    Node * root = new Node(preOrder[idx]);
+    Node * root = new Node(preOrder[idx]);   
     ++idx;
 
     int pos = search(inOrder, inStart, inEnd, root->data);
@@ -119,7 +122,7 @@ Node * buildBST() {
     }
     return root;
 }
-
+//Time Complexity : O(log n)
 Node * insertBST(Node * root, int d) {
     if (root == NULL) {
         Node * newNode = new Node(d);
@@ -135,6 +138,7 @@ Node * insertBST(Node * root, int d) {
     return root;
 }
 
+//Time Complexity : O(n) 
 void printRange(Node * root, int K1, int K2) {
     if (root == NULL) return;
 
@@ -147,6 +151,7 @@ void printRange(Node * root, int K1, int K2) {
     }
 }
 
+//Time Complexity: O(n)
 bool isIdentical(Node* A, Node * B) {
     if (A == NULL && B == NULL) return true;
 
@@ -156,6 +161,7 @@ bool isIdentical(Node* A, Node * B) {
            isIdentical(A->right, B->right);
 }
 
+//Time Complexity : O(n)
 bool isBst(Node * root, int minVal, int maxVal) {
     if (root == NULL) return true;
     return (root->data >= minVal && root->data <= maxVal) &&
@@ -163,6 +169,7 @@ bool isBst(Node * root, int minVal, int maxVal) {
            isBst(root->right, root->data, maxVal);
 }
 
+//Time Complexity :O(n)
 typedef pair<Node *, Node *> nn;    //head , tail
 nn getSortedLL(Node * root) {
     if (root == NULL) {
@@ -199,6 +206,7 @@ nn getSortedLL(Node * root) {
 
 // int cnt = 0;
 
+//Time Complexity : O(k) , k=kth smallest node to be searched
 Node * kSmallestNode(Node * root, int &cnt,  int K) {
     //tells the kth smallest node and also sets the no. of read
     if (root == NULL) return NULL;
@@ -215,6 +223,7 @@ Node * kSmallestNode(Node * root, int &cnt,  int K) {
     return kSmallestNode(root->right, cnt, K);
 }
 
+//Time Complexity: O(log n)
 Node * lcaBST(Node * root, int d1, int d2){
     if (root == NULL) return NULL;
 
@@ -229,7 +238,7 @@ Node * lcaBST(Node * root, int d1, int d2){
     return lcaBST(root->left, d1, d2);
 }
 
-
+//Time Complexity : O(n)
 void printDLL(Node * head) {
     Node * cur =  head;
     while (cur) {
